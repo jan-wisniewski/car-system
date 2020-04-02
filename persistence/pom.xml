@@ -24,4 +24,8 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <finalName>persistence</finalName>
+    </build>
+
 </project>
