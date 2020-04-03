@@ -1,6 +1,9 @@
-package com.app.service;
+package com.app.service.service;
 
 import com.app.persistence.converter.JsonCarsConverter;
+import com.app.persistence.enums.CarBodyType;
+import com.app.persistence.enums.EngineType;
+import com.app.persistence.enums.TyreType;
 import com.app.persistence.model.Car;
 import com.app.service.enums.SortCriterion;
 import com.app.service.enums.StatsCriterion;
@@ -8,7 +11,9 @@ import com.app.service.exceptions.CarsServiceException;
 import org.eclipse.collections.impl.collector.BigDecimalSummaryStatistics;
 import org.eclipse.collections.impl.collector.Collectors2;
 
+import java.math.BigDecimal;
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -107,6 +112,72 @@ public class CarsService {
         sb.append("MAX PRICE: ").append(priceStats.getMax()).append("\n");
         sb.append("AVERAGE PRICE: ").append(priceStats.getAverage()).append("\n");
         return sb.toString();
+    }
+
+    public Map<Car, Integer> mapToTravelledDistance() {
+        if (cars==null){
+            throw new CarsServiceException("Cars Set is null");
+        }
+        return cars.stream()
+                .collect(Collectors.toMap(
+                        Function.identity(),
+                        Car::getMileage))
+                .entrySet().stream()
+                .sorted(Comparator.comparing(Map.Entry::getValue, Comparator.reverseOrder()))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (v1, v2) -> v1,
+                        LinkedHashMap::new));
+    }
+
+    public Map<TyreType, List<Car>> groupByTyreType() {
+        if (cars==null){
+            throw new CarsServiceException("Cars Set is null");
+        }
+        return cars.stream()
+                .collect(Collectors.groupingBy(c -> c.getWheel().getType()))
+                .entrySet().stream()
+                .sorted(Comparator.comparing(c -> c.getValue().size(), Comparator.reverseOrder()))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (c1, c2) -> c1,
+                        LinkedHashMap::new
+                ));
+    }
+
+    public List<Car> findByCarBodyTypeAndPriceRange(CarBodyType carBodyType, BigDecimal priceFrom, BigDecimal priceTo) {
+        if (carBodyType == null || priceFrom == null || priceTo == null) {
+            throw new CarsServiceException("One of the argument is null");
+        }
+
+        if (priceFrom.compareTo(BigDecimal.ZERO) < 0 || priceTo.compareTo(BigDecimal.ZERO) < 0) {
+            throw new CarsServiceException("Price is negative");
+        }
+
+        return cars.stream()
+                .filter(car -> car.getCarBody().getType().equals(carBodyType)
+                        && car.getPrice().compareTo(priceFrom) >= 0 && car.getPrice().compareTo(priceTo) <= 0)
+                .collect(Collectors.toList());
+    }
+
+    public List<Car> findByEngineType(EngineType engineType) {
+        if (engineType == null) {
+            throw new CarsServiceException("EngineType is null");
+        }
+        return cars.stream()
+                .filter(car -> car.getEngine().getType().equals(engineType))
+                .sorted(Comparator.comparing(Car::getModel))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public String toString() {
+        return cars
+                .stream()
+                .map(Car::toString)
+                .collect(Collectors.joining("\n"));
     }
 
 }

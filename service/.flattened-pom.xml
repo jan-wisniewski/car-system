@@ -28,5 +28,11 @@
       <version>1.0</version>
       <scope>compile</scope>
     </dependency>
+    <dependency>
+      <groupId>org.eclipse.collections</groupId>
+      <artifactId>eclipse-collections</artifactId>
+      <version>10.2.0</version>
+      <scope>compile</scope>
+    </dependency>
   </dependencies>
 </project>
