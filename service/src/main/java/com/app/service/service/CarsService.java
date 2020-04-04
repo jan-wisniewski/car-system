@@ -179,6 +179,4 @@ public class CarsService {
                 .map(Car::toString)
                 .collect(Collectors.joining("\n"));
     }
-
 }
-
