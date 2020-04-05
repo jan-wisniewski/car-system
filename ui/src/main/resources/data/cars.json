@@ -1,0 +1,93 @@
+[
+  {
+    "model": "SKODA",
+    "price": 5500,
+    "mileage": 12000,
+    "engine": {
+      "type": "LPG",
+      "power": 1200.0
+    },
+    "carBody": {
+      "color": "GREEN",
+      "type": "COMBI",
+      "components": [
+        "KLIMATYZACJA",
+        "ABS"
+      ]
+    },
+    "wheel": {
+      "model": "MODEL1",
+      "size": 18,
+      "type": "SUMMER"
+    }
+  },
+  {
+    "model": "BMW",
+    "price": 9500,
+    "mileage": 25000,
+    "engine": {
+      "type": "LPG",
+      "power": 1900.0
+    },
+    "carBody": {
+      "color": "WHITE",
+      "type": "COMBI",
+      "components": [
+        "KLIMATYZACJA",
+        "ABS",
+        "PASS ASSISTANT"
+      ]
+    },
+    "wheel": {
+      "model": "MODEL1",
+      "size": 16,
+      "type": "SUMMER"
+    }
+  },
+  {
+    "model": "FIAT",
+    "price": 7500,
+    "mileage": 31000,
+    "engine": {
+      "type": "LPG",
+      "power": 1000.0
+    },
+    "carBody": {
+      "color": "RED",
+      "type": "HATCHBACK",
+      "components": [
+        "KLIMATYZACJA",
+        "PASS ASSISTANT"
+      ]
+    },
+    "wheel": {
+      "model": "MODEL1",
+      "size": 25,
+      "type": "SUMMER"
+    }
+  },
+  {
+    "model": "MERCEDES",
+    "price": 1500,
+    "mileage": 44000,
+    "engine": {
+      "type": "LPG",
+      "power": 200.0
+    },
+    "carBody": {
+      "color": "GREEN",
+      "type": "SEDAN",
+      "components": [
+        "KLIMATYZACJA",
+        "PAS ASSISTANT",
+        "ABS",
+        "CAMERA"
+      ]
+    },
+    "wheel": {
+      "model": "MODEL1",
+      "size": 20,
+      "type": "SUMMER"
+    }
+  }
+]

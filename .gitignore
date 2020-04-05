@@ -1,2 +1,5 @@
 .idea
 ui/ui.iml
+persistence/target
+ui/target
+service/target

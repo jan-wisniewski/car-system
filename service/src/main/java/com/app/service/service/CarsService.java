@@ -156,6 +156,10 @@ public class CarsService {
             throw new CarsServiceException("Price is negative");
         }
 
+        if(priceTo.compareTo(priceFrom)<0){
+            throw new CarsServiceException("Price to cannot be smaller than price from");
+        }
+
         return cars.stream()
                 .filter(car -> car.getCarBody().getType().equals(carBodyType)
                         && car.getPrice().compareTo(priceFrom) >= 0 && car.getPrice().compareTo(priceTo) <= 0)
