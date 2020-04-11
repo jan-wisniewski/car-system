@@ -1,5 +1,5 @@
 package com.app.service.enums;
 
 public enum SortCriterion {
-    ENGINE, WHEEL, COMPONENTS
+    ENGINE, WHEEL, COMPONENTS, PRICE
 }

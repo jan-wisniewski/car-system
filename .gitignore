@@ -3,3 +3,4 @@ ui/ui.iml
 persistence/target
 ui/target
 service/target
+service/src/test

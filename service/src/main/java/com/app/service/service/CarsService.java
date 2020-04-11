@@ -53,10 +53,10 @@ public class CarsService {
                     case ENGINE -> cars.stream().sorted(Comparator.comparing(c -> c.getEngine().getPower()));
                     case WHEEL -> cars.stream().sorted(Comparator.comparing(c -> c.getWheel().getSize()));
                     case COMPONENTS -> cars.stream().sorted(Comparator.comparing(c -> c.getCarBody().getComponents().size()));
-                    default -> cars.stream().sorted(Comparator.comparing(Car::getPrice));
+                    case PRICE -> cars.stream().sorted(Comparator.comparing(Car::getPrice));
                 };
         List<Car> carsList = carStream.collect(Collectors.toList());
-        if (ascendingSort) {
+        if (!ascendingSort) {
             Collections.reverse(carsList);
         }
         return carsList;
@@ -73,7 +73,7 @@ public class CarsService {
         };
     }
 
-    public String carStatsPowerEngine() {
+    private String carStatsPowerEngine() {
         if (cars==null){
             throw new CarsServiceException("Cars Set is null");
         }
@@ -87,7 +87,7 @@ public class CarsService {
         return sb.toString();
     }
 
-    public String carStatsMileage() {
+    private String carStatsMileage() {
         if (cars==null){
             throw new CarsServiceException("Cars Set is null");
         }
@@ -101,7 +101,7 @@ public class CarsService {
         return sb.toString();
     }
 
-    public String carStatsPrice() {
+    private String carStatsPrice() {
         if (cars==null){
             throw new CarsServiceException("Cars Set is null");
         }

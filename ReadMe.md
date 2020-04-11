@@ -1,11 +1,10 @@
 # Car System App
-> Managing a collection of cars from Json file. Console project with built-in menu.
+> Managing a collection of cars from JSON file. Console multi-module project with built-in menu.
 
 ## Table of contents
-* [General info](#general-info)
 * [Technologies](#technologies)
 * [Setup](#setup)
-* [Contact](#contact)
+* [Author](#Author)
 
 ## Technologies
 #### General:
@@ -32,7 +31,13 @@
 * [Maven Surefire Plugin](https://maven.apache.org/surefire/maven-surefire-plugin/) 2.12.4
 
 ## Setup
-To run the program build app in the console with the command `mvn clean install` in your IDE. Then copy resources folder and app.jar file from target folder in your ui module. Paste it anywhere on your computer. Then you can run app from console with the command `java -jar --enable-preview app.jar`
+To build application from root directory of project run command
+
+`mvn clean install`
+
+Then copy resources folder and app.jar file from target folder in your ui module. Paste it anywhere. Then you can run app from console with the command
+
+`java -jar --enable-preview app.jar`
 
 ## Author
 Jan Wiśniewski
